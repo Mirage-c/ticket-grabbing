@@ -10,7 +10,7 @@ const ConfirmX = 878;
 const ConfirmY = 2263;
 
 //是否在测试调试
-var isDebug = false;
+var isDebug = true;
 //调试模式下的模拟票档自动选择的点击坐标
 const debugTicketClickX = 207;
 const debugTicketClickY = 1170;
@@ -45,8 +45,8 @@ function main() {
         var but1 = classNameStartsWith('android.widget.').text("立即预订").exists();
         var but2 = classNameStartsWith('android.widget.').text("立即购票").exists();
         var but3 = classNameStartsWith('android.widget.').text("特惠购票").exists();
-        //var but4= classNameStartsWith('android.widget.').text("缺货登记").exists();
-        var result = but1 || but2 || but3;
+        var but4 = classNameStartsWith('android.widget.').text("特惠预订").exists();
+        var result = but1 || but2 || but3 || but4;
         if (result) {
             var s;
             if (but1) {
@@ -55,6 +55,8 @@ function main() {
                 var s = classNameStartsWith('android.widget.').text("立即购票").findOne().click();
             } else if (but3) {
                 var s = classNameStartsWith('android.widget.').text("特惠购票").findOne().click();
+            } else if (but4) {
+                var s = classNameStartsWith('android.widget.').text("特惠预订").findOne().click();
             }
             break;
         }
